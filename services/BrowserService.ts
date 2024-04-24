@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+import puppeteer from "puppeteer";
 
 class BrowserService {
 
@@ -6,7 +6,7 @@ class BrowserService {
         return puppeteer.launch({});
     }
 
-    static closeBrowser(browser) {
+    static closeBrowser(browser: any) {
         if (!browser) {
             return;
         }
