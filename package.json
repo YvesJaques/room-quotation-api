@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "tsx watch server.ts",
+    "dev": "tsx watch src/server.ts",
     "lint": "eslint src --ext .ts"
   },
   "author": "Yves Jaques",
