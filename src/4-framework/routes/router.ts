@@ -1,11 +1,8 @@
+import httpPostRoomPriceSearch from '@/3-operations/roomPriceSearch.controller'
 import express from 'express'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  res.send('Hello Asksuite World!')
-})
-
-// TODO implement endpoint here
+router.post('/search', httpPostRoomPriceSearch)
 
 export default router
