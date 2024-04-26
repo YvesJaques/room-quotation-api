@@ -2,21 +2,26 @@ import {
   roomBookingSiteBaseUrl,
   roomBookingUrlParams,
 } from '@/2-business/consts/roomBookingPartner'
+import { RoomPriceSearchUseCaseOutput } from '@/2-business/dto/roomPriceSearch/output'
+import { IBrowserService } from '@/2-business/services/IBrowserService'
 import puppeteer, { Browser } from 'puppeteer'
 
-export class BrowserService {
-  getBrowser() {
+export class BrowserService implements IBrowserService {
+  getBrowser(): Promise<Browser> {
     return puppeteer.launch({})
   }
 
-  closeBrowser(browser: Browser) {
+  closeBrowser(browser: Browser): Promise<void> {
     if (!browser) {
-      return
+      return Promise.resolve()
     }
     return browser.close()
   }
 
-  async getRoomQuotations(checkin: Date, checkout: Date) {
+  async getRoomQuotations(
+    checkin: Date,
+    checkout: Date,
+  ): Promise<RoomPriceSearchUseCaseOutput[]> {
     const browser = await puppeteer.launch({
       headless: true,
     })
@@ -25,7 +30,7 @@ export class BrowserService {
     const formattedEndDate = checkout.toISOString().split('T')[0]
 
     const page = await browser.newPage()
-    // const url = 'https://pratagy.letsbook.com.br/reserva/selecao-de-quartos?checkin=2024-06-21&checkout=2024-06-25&criancas&destino=Pratagy+Beach+Resort+All+Inclusive&promocode=&tarifa=&numeroAdultos=2&codigoHotel=12&codigoCidade&device=Desktop&idioma=pt-BR&moeda=BRL&emailHospede'
+
     const url = `${roomBookingSiteBaseUrl}${formattedStartDate}&checkout=${formattedEndDate}${roomBookingUrlParams}`
     await page.goto(url, {
       waitUntil: 'networkidle2',
