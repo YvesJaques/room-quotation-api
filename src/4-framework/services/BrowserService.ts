@@ -70,7 +70,7 @@ export class BrowserService {
           roomHandle,
         )
 
-        const price = price1 + price2
+        const price = 'R$ ' + price1 + price2
 
         const backgroundImageUrl = await page.evaluate(
           (el) =>
