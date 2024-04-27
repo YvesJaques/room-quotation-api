@@ -3,11 +3,16 @@ import {
   roomBookingUrlParams,
 } from '@/2-business/consts/roomBookingPartner'
 import { RoomPriceSearchUseCaseOutput } from '@/2-business/dto/roomPriceSearch/output'
-import { IBrowserService } from '@/2-business/services/IBrowserService'
+import {
+  IBrowserService,
+  IBrowserServiceToken,
+} from '@/2-business/services/IBrowserService'
 import puppeteer, { Browser } from 'puppeteer'
+import { Service } from 'typedi'
 
+@Service({ transient: false, id: IBrowserServiceToken })
 export class BrowserService implements IBrowserService {
-  getBrowser(): Promise<Browser> {
+  private getBrowser(): Promise<Browser> {
     return puppeteer.launch({})
   }
 

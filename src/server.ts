@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import 'dotenv/config'
 import express from 'express'
 import router from '@/4-framework/routes/router'

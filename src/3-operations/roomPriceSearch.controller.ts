@@ -1,14 +1,15 @@
-import RoomPriceSearchUseCase from '@/2-business/roomPriceSearch.usecase'
+import { RoomPriceSearchUseCase } from '@/2-business/useCases/roomPriceSearch.usecase'
 import { Request, Response } from 'express'
+import Container from 'typedi'
 
-async function httpPostRoomPriceSearch(req: Request, res: Response) {
-  const roomPriceSearchUseCase = new RoomPriceSearchUseCase()
+export class RoomPriceSearchController {
+  async post(req: Request, res: Response) {
+    const roomPriceSearchUseCase = Container.get(RoomPriceSearchUseCase)
 
-  const { checkin, checkout } = req.body
+    const { checkin, checkout } = req.body
 
-  const result = await roomPriceSearchUseCase.run({ checkin, checkout })
+    const result = await roomPriceSearchUseCase.run({ checkin, checkout })
 
-  return res.send(result)
+    return res.send(result)
+  }
 }
-
-export default httpPostRoomPriceSearch
