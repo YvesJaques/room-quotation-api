@@ -29,6 +29,8 @@ export class BrowserService implements IBrowserService {
   ): Promise<RoomPriceSearchUseCaseOutput[]> {
     const browser = await puppeteer.launch({
       headless: true,
+      executablePath: process.env.BROWSER_PATH || undefined,
+      args: ['--no-sandbox', '--disabled-setupid-sandbox'],
     })
 
     const formattedStartDate = checkin.toISOString().split('T')[0]

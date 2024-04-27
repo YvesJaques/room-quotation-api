@@ -1,4 +1,48 @@
-# Test Dev Asksuite
+# Test Dev Asksuite - Intro
+This is a web crawling API to fetch price quotations for rooms based on given checkin and checkout dates
+
+# Test Dev Asksuite - Features
+
+This project uses:
+* Express
+* Typescript
+* Puppeteer: for web crawling
+* Jest: for unit tests
+* Docker: For running on a container
+* Typedi: for dependency injection
+* More features coming soon...
+
+# Test Dev Asksuite - How to run locally
+* Have node installed (Node 20 recommended)
+* $ npm install (or equivalent)
+* $ npm run dev (or equivalent)
+* make a post request to localhost:8080/search with a payload as follows:
+        <pre>
+        {
+            "checkin": "2021-07-01", 
+            "checkout": "2021-07-03"
+        }
+        </pre>
+
+# Test Dev Asksuite - How to run on a container
+* Have docker installed
+* $ docker compose up
+* make a post request to localhost:8080/search with a payload as follows:
+        <pre>
+        {
+            "checkin": "2021-07-01", 
+            "checkout": "2021-07-03"
+        }
+        </pre>
+
+
+# Test Dev Asksuite - How to run unit tests
+* $ npm run test (or equivalent)
+
+
+
+
+# Test Dev Asksuite - Original README
 
 Hey! Glad you're here.
 I'm going to explain exactly what you'll have to implement in this test and what we expect as outcome.
