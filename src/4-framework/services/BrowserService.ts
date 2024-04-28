@@ -28,6 +28,11 @@ export class BrowserService implements IBrowserService {
       waitUntil: 'networkidle2',
     })
 
+    await page.waitForSelector('[class="room-option"]', {
+      visible: true,
+      timeout: 60000,
+    })
+
     const roomHandles = await page.$$('.room-option-wrapper')
 
     const items = []

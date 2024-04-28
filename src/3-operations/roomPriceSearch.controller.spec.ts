@@ -1,7 +1,7 @@
 import { app } from '@/app'
 import request from 'supertest'
 
-jest.setTimeout(30000)
+jest.setTimeout(60000)
 describe('RoomPriceSearch.Controller', () => {
   beforeAll(async () => {})
 
