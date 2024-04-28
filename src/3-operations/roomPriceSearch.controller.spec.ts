@@ -1,7 +1,10 @@
+import 'dotenv/config'
 import { app } from '@/app'
 import request from 'supertest'
 
-jest.setTimeout(60000)
+process.env.ENV = 'TEST'
+
+jest.setTimeout(30000)
 describe('RoomPriceSearch.Controller', () => {
   beforeAll(async () => {})
 

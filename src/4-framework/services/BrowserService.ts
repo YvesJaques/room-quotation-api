@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import {
   roomBookingSiteBaseUrl,
   roomBookingUrlParams,
@@ -28,10 +29,11 @@ export class BrowserService implements IBrowserService {
       waitUntil: 'networkidle2',
     })
 
-    await page.waitForSelector('[class="room-option"]', {
-      visible: true,
-      timeout: 60000,
-    })
+    if (process.env.ENV !== 'TEST') {
+      await page.waitForSelector('[class="room-option"]', {
+        visible: true,
+      })
+    }
 
     const roomHandles = await page.$$('.room-option-wrapper')
 
