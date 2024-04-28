@@ -4,14 +4,15 @@ This is a web crawling API to fetch price quotations for rooms based on given ch
 # Test Dev Asksuite - Features
 
 This project uses:
+* NodeJS
 * Express
 * Typescript
 * Puppeteer: for web crawling
 * Jest: for unit tests
 * Supertest: for integration tests
-* Docker: For running on a container
+* Docker: for running on a container
 * Typedi: for dependency injection
-* More features coming soon...
+* Github Actions: Continuous integration
 
 # Test Dev Asksuite - How to run locally
 * Have node installed (Node 20 recommended)
