@@ -8,6 +8,7 @@ This project uses:
 * Typescript
 * Puppeteer: for web crawling
 * Jest: for unit tests
+* Supertest: for integration tests
 * Docker: For running on a container
 * Typedi: for dependency injection
 * More features coming soon...

@@ -43,10 +43,6 @@ export class BrowserService implements IBrowserService {
       waitUntil: 'networkidle2',
     })
 
-    await page.waitForSelector('[class="room-option-wrapper"]', {
-      visible: true,
-    })
-
     const roomsHandles = await page.$$('.room-option-wrapper')
 
     const items = []
@@ -93,7 +89,14 @@ export class BrowserService implements IBrowserService {
               ?.getAttribute('style') || '',
           roomHandle,
         )
-        const image = backgroundImageUrl.match(/url\("(.*)"/)[1]
+
+        const matchedBackgroundImageUrl =
+          backgroundImageUrl.match(/url\("(.*)"/) || ''
+
+        const image =
+          matchedBackgroundImageUrl.length > 0
+            ? matchedBackgroundImageUrl[1]
+            : ''
 
         items.push({ name, description, price, image })
       } catch {
